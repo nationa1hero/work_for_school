@@ -1,0 +1,61 @@
+.transparent-bg {
+    background-color: rgba(238, 248, 239, 0.8);
+    padding: 40px;
+    border-radius: 30px;
+}
+
+.rating-user-bg {
+    background-color: rgba(238, 248, 239, 0.8);
+    padding: 15px;
+    border-radius: 30px;
+}
+
+.rating-bg {
+    background-color: rgba(238, 248, 239, 1);
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 150px;
+    height: auto;
+}
+
+.your-rating-bg {
+    background-color: rgba(200, 200, 200, 1);
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 150px;
+    height: auto;
+}
+
+body {
+    background-image: url('../images/im.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+}
+
+.transparent-navbar {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.transparent-bg-account {
+    background-color: #287D40;
+    padding: 30px;
+    height: 500px;
+}
+
+
+.btn-task {
+    height: 60px;
+    color: #000;
+    background-color: #8DB991;
+    border-color: #8DB991;
+    border-radius: 30px;
+}
+
+.centered-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

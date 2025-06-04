@@ -1,0 +1,51 @@
+{% extends 'html/base.html' %}
+{% load static %}
+
+{% block static %}<link rel="stylesheet" type="text/css" href="{% static 'css/chose_task_olymp.css' %}">{% endblock %}
+{% block title %}Предметы{% endblock %}
+
+{% block content %}
+<div class="container mt-4 mb-4">
+    <div class="row">
+        <div class="col-2 text-center justify-content-center align-self-center">
+            <img src="{% static 'images/dragon.png' %}" width="100" height="80" alt="Дракон">
+        </div>
+    </div>
+</div>
+<div class="container transparent-bg">
+    <div class="row mt-4">
+        <div class="col text-center justify-content-center align-self-center">
+            <div class="image-container">
+                <img class="img-fluid" src="{% static 'images/frame.png' %}" alt="Рамка" width="200" height="70">
+                <div class="centered-text">
+                    <a href="#" class="a">Задача 1</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col text-center justify-content-center align-self-center">
+            <div class="image-container">
+                <img class="img-fluid" src="{% static 'images/frame.png' %}" alt="Рамка" width="200" height="70">
+                <div class="centered-text">
+                    <a href="#" class="a">Задача 2</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col text-center justify-content-center align-self-center">
+            <div class="image-container">
+                <img class="img-fluid" src="{% static 'images/frame.png' %}" alt="Рамка" width="200" height="70">
+                <div class="centered-text">
+                    <a href="#" class="a">Задача 3</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-3 ps-0">
+        <a href="{% url 'items_olymp' %}"><img src="{% static 'images/back.png' %}" alt="Назад" width="35" height="35"></a>
+    </div>
+</div>
+{% endblock %}

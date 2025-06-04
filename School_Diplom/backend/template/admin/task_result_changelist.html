@@ -1,0 +1,8 @@
+{% extends "admin/change_list.html" %}
+{% load static %}
+
+{% block object-tools %}
+    <div class="object-tools">
+        <a href="{% url 'admin:export_task_results' %}" class="btn btn-primary">Экспортировать результаты задач</a>
+    </div>
+{% endblock %}

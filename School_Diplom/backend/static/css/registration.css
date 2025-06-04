@@ -1,0 +1,43 @@
+.transparent-bg {
+    background-color: rgba(238, 248, 239, 0.8);
+    padding: 30px;
+    border-radius: 30px;
+}
+
+body {
+    background-image: url('../images/im.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+}
+
+.transparent-navbar {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.transparent-bg-account {
+    background-color: #287D40;
+    padding: 30px;
+    height: 500px;
+}
+
+
+.btn-task {
+    width: 300px;
+    height: 40px;
+    color: #000;
+    background-color: #8DB991;
+    border-color: #8DB991;
+}
+
+.text-login a {
+    color: grey;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.text-login a:hover {
+    color: black;
+}

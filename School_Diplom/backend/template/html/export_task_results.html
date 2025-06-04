@@ -1,0 +1,44 @@
+{% extends 'html/base.html' %}
+{% load static %}
+
+{% block static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/account.css' %}">
+{% endblock %}
+
+{% block sidebar %}
+<nav class="navbar navbar-expand-lg navbar-light transparent-navbar">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item ms-2">
+                    <a class="nav-link" href="{% url 'home' %}">
+                        <img title="Личный кабинет" src="{% static 'icons/account.png' %}" alt="Личный кабинет" width="40" height="40">
+                    </a>
+                </li>
+                <li class="nav-item ms-2">
+                    <a class="nav-link" href="{% url 'admin:index' %}">
+                        <img title="Админ панель" src="{% static 'icons/admin.png' %}" alt="Админ панель" width="40" height="40">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+{% endblock %}
+
+<title>{% block title %}Выгрузка данных{% endblock %}</title>
+
+{% block content %}
+    <div class="container text-center">
+        <h1>Выгрузка результатов по решенным задачам</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Выгрузить в Excel</button>
+        </form>
+    </div>
+{% endblock %}

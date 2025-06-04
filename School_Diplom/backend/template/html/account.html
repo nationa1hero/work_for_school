@@ -1,0 +1,138 @@
+{% extends 'html/base.html' %}
+{% load static %}
+
+{% block static %}<link rel="stylesheet" type="text/css" href="{% static 'css/account.css' %}">{% endblock %}
+{% block title %}Личный кабинет{% endblock %}
+
+{% block sidebar %}
+<nav class="navbar navbar-expand-lg navbar-light transparent-navbar">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item ms-2">
+                    <a class="nav-link" href="{% url 'tasks' %}">
+                        <img title="Домой" src="{% static 'icons/castle.png' %}" alt="Замок" width="40" height="40">
+                    </a>
+                </li>
+
+                <li class="nav-item ms-2">
+                    <a class="nav-link" href="{% url 'items' %}">
+                        <img title="Предметы" src="{% static 'icons/dwarf.png' %}" alt="Волшебник" width="40" height="40">
+                    </a>
+                </li>
+
+                <li class="nav-item ms-2">
+                    <a class="nav-link" href="{% url 'items_olymp' %}">
+                        <img title="Олимпиада" src="{% static 'icons/dragon.png' %}" alt="Дракон" width="40" height="40">
+                    </a>
+                </li>
+
+                <li class="nav-item ms-2">
+                    <a class="nav-link" href="logout/">
+                        <img title="Выход" src="{% static 'icons/exit.png' %}" alt="Выйти" width="40" height="40">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+{% endblock %}
+
+{% block content%}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col me-5 account-bg ">
+            <div class="mt-2"><a href="{% url 'edit_profile' %}"><img src="{% static 'icons/update.png' %}" alt="Редактировать"></a></div>
+            {% if user.profile_picture %}
+            <div class="avatar-bg mt-3" style="background-image: url('{{ user.profile_picture.url }}')"></div>
+            {% else %}
+            <div class="avatar-bg mt-3" style="background-image: url('{% static 'images/not_photo.jpg' %}')"></div>
+            {% endif %}
+            <div class="name-bg mt-4 text-center"> <h3>{{ user.name }}</h3> </div>
+        </div>
+
+        <div class="col-7 ms-5 transparent-bg scroll pt-1">
+            <h3 class="text-center">Прогресс</h3>
+            <div class="container">
+                <div class="row">
+                    <div class="col-4">
+                        <h4>Ранг</h4>
+                    <div>
+                        {% if student_rank == 1 %}
+                            <img src="{% static 'ranks/rank_1.png' %}" width="200" height="250">
+                        {% elif student_rank == 2 %}
+                            <img src="{% static 'ranks/rank_2.png' %}" width="200" height="250">
+                        {% elif student_rank == 3 %}
+                            <img src="{% static 'ranks/rank_3.png' %}" width="200" height="250">
+                        {% elif student_rank == 4 %}
+                            <img src="{% static 'ranks/rank_4.png' %}" width="200" height="250">
+                        {% elif student_rank == 5 %}
+                            <img src="{% static 'ranks/rank_5.png' %}" width="200" height="250">
+                        {% elif student_rank == 6 %}
+                            <img src="{% static 'ranks/rank_6.png' %}" width="200" height="250">
+                        {% elif student_rank == 7 %}
+                            <img src="{% static 'ranks/rank_7.png' %}" width="200" height="250">
+                        {% elif student_rank == 8 %}
+                            <img src="{% static 'ranks/rank_8.png' %}" width="200" height="250">
+                        {% elif student_rank == 9 %}
+                            <img src="{% static 'ranks/rank_9.png' %}" width="200" height="250">
+                        {% else %}
+                            <img src="{% static 'ranks/rank_10.png' %}" width="200" height="250">
+                        {% endif %}
+                    </div>
+                        <h3>Очки: {{ point }} </h3>
+                        <div class="progress-container" data-progress="{{ percent_point }}">
+                            <div class="progress-bar" id="progress-bar"></div>
+                        </div>
+                        <p class="progress-text">Прогресс: {{ percent_point }}%</p>
+                    </div>
+                    <div class="col-8">
+                        <div class="row">
+                            <h4>Достижения</h4>
+                            <div class="transparent-bg-achevm scroll">
+                                {% if achievements_general %}
+                                    {% for achievements in achievements_general %}
+                                        <h4 title="{{ achievements.description }}">- {{ achievements.text }}</h4>
+                                    {% endfor %}
+                                {% else %}
+                                <h4>Здесь пока ничего нету...</h4>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <h4>Достижения по предметам</h4>
+                            <div  class="transparent-bg-achevm scroll">
+                                {% if achievements_inside %}
+                                    {% for achievements in achievements_inside %}
+                                        <h4 title="{{ achievements.description }}">- {{ achievements.text }}</h4>
+                                    {% endfor %}
+                                {% else %}
+                                <h4>Здесь пока ничего нету...</h4>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col text-center mt-4">
+                                <h5>Пройдено заданий</h5>
+                                <h5>{{ size_task }}</h5>
+                            </div>
+                            <div class="col text-center mt-4">
+                                <h5>Верно решено</h5>
+                                <h5>{{ percent_true_tasks_size }} %</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="{% static 'js/progres_bar.js' %}"></script>
+{% endblock %}

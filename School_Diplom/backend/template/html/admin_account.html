@@ -1,0 +1,49 @@
+{% extends 'html/account.html' %}
+{% load static %}
+
+{% block static %}<link rel="stylesheet" type="text/css" href="{% static 'css/admin_account.css' %}">{% endblock %}
+{% block title %}Личный кабинет Администратора{% endblock %}
+
+{% block sidebar %}
+<nav class="navbar navbar-expand-lg navbar-light transparent-navbar">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item ms-2">
+                    <a class="nav-link" href="{% url 'admin:index' %}">
+                        <img title="Админ панель" src="{% static 'icons/admin.png' %}" alt="Админ панель" width="40" height="40">
+                    </a>
+                </li>
+
+                <li class="nav-item ms-2">
+                    <a class="nav-link" href="logout/">
+                        <img title="Выйти" src="{% static 'icons/exit.png' %}" alt="Выйти" width="40" height="40">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+{% endblock %}
+
+{% block content%}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col me-5 account-bg ">
+            <div class="avatar-bg mt-5" style="background-image: url('{% static 'images/admin_avatar.png' %}')"></div>
+            <div class="name-bg mt-4 text-center"> <h3>{{ user.name }}</h3> </div>
+        </div>
+
+        <div class="col-7 ms-5 transparent-bg scroll">
+            <h1 class="text-center">Зарегистрированные Ученики:</h1>
+             {% for student in students %}
+            <h3>{{ student.profile_data.name }}, Ранг - {{student.rank}}, Баллы - {{student.points}}, Класс - {{student.clazz}}</h3>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

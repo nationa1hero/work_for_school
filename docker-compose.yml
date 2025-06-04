@@ -1,0 +1,87 @@
+version: '4.28.0'
+
+services:
+  django:
+    image: SEP/0.0.6
+    volumes:
+      - static_volume:/app/static
+      - media_volume:/app/media
+    # Сборка образа для сервиса django из текущей директории
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # Задание имени контейнера для сервиса django
+    container_name: django
+    # Задание команды, которую нужно запустить при запуске контейнера для сервиса django
+    command: >
+      bash -c "python manage.py collectstatic --noinput && python manage.py migrate  && python manage.py runserver 0.0.0.0:8000"
+    # Открытие порта на хостовой машине и перенаправление на порт в контейнере
+    ports:
+      - 8000:8000
+    # Зависимость от другого сервиса
+    depends_on:
+      - pgdb
+      - redis
+
+  pgdb:
+    image: postgres:latest
+    restart: always
+    environment:
+      - POSTGRES_DB=DB_Diplom
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_CLIENT_ENCODING=UTF8
+     # Задание имени контейнера для сервиса pgdb
+    container_name: pgdb
+     # Связывание тома с директорией в контейнере для сохранения данных postgres
+    volumes:
+      - pgdbdata:/var/lib/postgresql/data/
+
+  nginx:
+    build:
+      dockerfile: ./Dockerfile
+      context: School_Diplom/docker/nginx/
+    container_name: nginx
+    image: nginx
+    volumes:
+      - static_volume:/app/static
+      - media_volume:/app/media
+    depends_on:
+      - django
+    ports:
+      - "8080:80"
+
+  redis:
+    image: redis:6.0
+    container_name: redis
+
+  celery:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: celery
+    command: celery -A School_Diplom worker --loglevel=info
+    depends_on:
+      - django
+      - redis
+    volumes:
+      - static_volume:/app/static
+      - media_volume:/app/media
+
+  celery_beat:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: celery_beat
+    command: celery -A School_Diplom beat --loglevel=info
+    depends_on:
+      - django
+      - redis
+    volumes:
+      - static_volume:/app/static
+      - media_volume:/app/media
+
+volumes:
+  pgdbdata:
+  static_volume:
+  media_volume:

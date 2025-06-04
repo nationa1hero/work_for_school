@@ -1,0 +1,56 @@
+.transparent-bg {
+    background-color: rgba(238, 248, 239, 0.8);
+    padding: 30px; 
+    border-radius: 30px;
+    height: auto;
+}
+
+body {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-image: url('../images/im.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+}
+
+.transparent-navbar {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.title {
+    font-size: 86px;
+}
+
+.image-container {
+    position: relative;
+}
+
+.centered-text {
+    position: absolute;
+    top: 44%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: yellow;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 22px;
+}
+
+.centered-text .a {
+    color: yellow;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.centered-text .a:hover {
+    color: white;
+}
+
+a.not_a {
+    color: yellow;
+    text-decoration: none;
+    pointer-events: none;
+    cursor: default;
+}

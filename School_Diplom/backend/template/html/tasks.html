@@ -1,0 +1,52 @@
+{% extends 'html/base.html' %}
+{% load static %}
+
+{% block static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/tasks.css' %}">{% endblock %}
+{% block title %}Задачи{% endblock %}
+
+{% block content%}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-5 rating-user-bg">
+            <h1 class="text-center mb-3">Рейтинг Учеников:</h1>
+            {% for student in students %}
+            {% if student.student.id == user.id %}
+            <h3 class="your-rating-bg">#{{student.index}} {{student.student.profile_data.name}} - {{student.student.points}}</h3>
+            {% else %}
+            <h3 class="rating-bg">#{{student.index}} {{student.student.profile_data.name}} - {{student.student.points}}</h3>
+            {% endif %}
+            {% endfor %}
+            {% if top_ten_rating %}
+             <h3 class="your-rating-bg">#{{index}} {{user.profile_data.name}} - {{user.points}} </h3>
+            {% endif %}
+        </div>
+        <div class="col-6 offset-1 text-center">
+            <div class="container transparent-bg">
+                <div class="row">
+                    <div class="col justify-content-center">
+                        <img src="{% static 'images/dwarf_task.png' %}" width="120" height="100" alt="Волшебник">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col justify-content-center mt-3">
+                        <a href="{% url 'items' %}" class="btn btn-success centered-button btn-task">Задачи</a>
+                    </div>
+                </div>
+            </div>
+            <div class="container mt-5 transparent-bg">
+                <div class="row">
+                    <div class="col justify-content-center">
+                        <img src="{% static 'images/dragon.png' %}" width="120" height="100" alt="Дракон">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col justify-content-center mt-3">
+                        <a href="{% url 'items_olymp' %}" class="btn btn-success centered-button btn-task">Олимпиадные задачи</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

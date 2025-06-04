@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="{% static 'favicon.png' %}" />
+    {% block static %}<link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">{% endblock %}
+    <title>{% block title %}Титульник{% endblock %}</title>
+</head>
+<body>
+{% block sidebar %}
+<nav class="navbar navbar-expand-lg navbar-light transparent-navbar">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item ms-2">
+                    <a class="nav-link" href="{% url 'tasks' %}">
+                        <img title="Домой" src="{% static 'icons/castle.png' %}" alt="Замок" width="40" height="40">
+                    </a>
+                </li>
+
+                <li class="nav-item ms-2">
+                    <a class="nav-link" href="{% url 'items' %}">
+                        <img title="Предметы" src="{% static 'icons/dwarf.png' %}" alt="Волшебник" width="40" height="40">
+                    </a>
+                </li>
+
+                <li class="nav-item ms-2">
+                    <a class="nav-link" href="{% url 'items_olymp' %}">
+                        <img title="Олимпиада" src="{% static 'icons/dragon.png' %}" alt="Дракон" width="40" height="40">
+                    </a>
+                </li>
+
+                <li class="nav-item ms-2">
+                    <a class="nav-link" href="{% url 'home' %}">
+                        <img title="Личный кабинет" src="{% static 'icons/account.png' %}" alt="Личный кабинет" width="40" height="40">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+{% endblock %}
+
+{% block content %}
+{% endblock %}
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

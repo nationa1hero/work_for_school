@@ -1,0 +1,155 @@
+{% extends 'html/base.html' %}
+{% load static %}
+
+{% block static %}<link rel="stylesheet" type="text/css" href="{% static 'css/items.css' %}">{% endblock %}
+{% block title %}Предметы{% endblock %}
+
+{% block content%}
+<div class="container">
+    <div class="row">
+        <div class="col-2 text-center justify-content-center align-self-center">
+            <img src="{% static 'images/dragon.png' %}" width="100" height="80" alt="Волщебник">
+        </div>
+        <div class="col-6 offset-1 text-center justify-content-center align-self-center">
+            <p class="title">Предметы</p>
+        </div>
+    </div>
+</div>
+<div class="container transparent-bg">
+    <div class="row mt-4">
+        <div class="col text-center justify-content-center align-self-center">
+            <div class="image-container">
+                <img class="img-fluid" src="{% static 'images/frame.png' %}" alt="Рамка" width="200" height="70">
+                {% if "математика" in items %}
+                <div class="centered-text">
+                    <a href="{% url 'chose_task_olymp' %}" class="a">Математика</a>
+                </div>
+                {% else %}
+                <div class="centered-text">
+                    <a href="#" class="not_a">Математика</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col offset-1 text-center justify-content-center align-self-center">
+            <div class="image-container">
+                <img class="img-fluid" src="{% static 'images/frame.png' %}" alt="Рамка" width="200" height="70">
+                {% if "биология" in items %}
+                <div class="centered-text">
+                    <a href="{% url 'chose_task_olymp' %}" class="a">Биология</a>
+                </div>
+                {% else %}
+                <div class="centered-text">
+                    <a href="#" class="not_a">Биология</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col offset-1 text-center justify-content-center align-self-center">
+            <div class="image-container">
+                <img class="img-fluid" src="{% static 'images/frame.png' %}" alt="Рамка" width="200" height="70">
+                {% if "английский язык" in items %}
+                <div class="centered-text">
+                    <a href="{% url 'chose_task_olymp' %}" class="a">Английский язык</a>
+                </div>
+                {% else %}
+                <div class="centered-text">
+                    <a href="#" class="not_a">Английский язык</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col text-center justify-content-center align-self-center">
+            <div class="image-container">
+                <img class="img-fluid" src="{% static 'images/frame.png' %}" alt="Рамка" width="200" height="70">
+                {% if "информатика" in items %}
+                <div class="centered-text">
+                    <a href="{% url 'chose_task_olymp' %}" class="a">Информатика</a>
+                </div>
+                {% else %}
+                <div class="centered-text">
+                    <a href="#" class="not_a">Информатика</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col offset-1 text-center justify-content-center align-self-center">
+            <div class="image-container">
+                <img class="img-fluid" src="{% static 'images/frame.png' %}" alt="Рамка" width="200" height="70">
+                {% if "русский язык" in items %}
+                <div class="centered-text">
+                    <a href="{% url 'chose_task_olymp' %}" class="a">Русский язык</a>
+                </div>
+                {% else %}
+                <div class="centered-text">
+                    <a href="#" class="not_a">Русский язык</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col offset-1 text-center justify-content-center align-self-center">
+            <div class="image-container">
+                <img class="img-fluid" src="{% static 'images/frame.png' %}" alt="Рамка" width="200" height="70">
+                {% if "география" in items %}
+                <div class="centered-text">
+                    <a href="{% url 'chose_task_olymp' %}" class="a">География</a>
+                </div>
+                {% else %}
+                <div class="centered-text">
+                    <a href="#" class="not_a">География</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col text-center justify-content-center align-self-center">
+            <div class="image-container">
+                <img class="img-fluid" src="{% static 'images/frame.png' %}" alt="Рамка" width="200" height="70">
+                {% if "история" in items %}
+                <div class="centered-text">
+                    <a href="{% url 'chose_task_olymp' %}" class="a">История</a>
+                </div>
+                {% else %}
+                <div class="centered-text">
+                    <a href="#" class="not_a">История</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col offset-1 text-center justify-content-center align-self-center">
+            <div class="image-container">
+                <img class="img-fluid" src="{% static 'images/frame.png' %}" alt="Рамка" width="200" height="70">
+                {% if "обществознание" in items %}
+                <div class="centered-text">
+                    <a href="{% url 'chose_task_olymp' %}" class="a">Обществознание</a>
+                </div>
+                {% else %}
+                <div class="centered-text">
+                    <a href="#" class="not_a">Обществознание</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col offset-1 text-center justify-content-center align-self-center">
+            <div class="image-container">
+                <img class="img-fluid" src="{% static 'images/frame.png' %}" alt="Рамка" width="200" height="70">
+                {% if "литература" in items %}
+                <div class="centered-text">
+                    <a href="{% url 'chose_task_olymp' %}" class="a">Литература</a>
+                </div>
+                {% else %}
+                <div class="centered-text">
+                    <a href="#" class="not_a">Литература</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="container mt-3 ps-0">
+        <a href="{% url 'tasks' %}"><img src="{% static 'images/back.png' %}" alt="Назад" width="35" height="35"></a>
+    </div>
+</div>
+{% endblock %}

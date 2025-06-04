@@ -1,0 +1,61 @@
+.transparent-bg {
+    background-color: rgba(238, 248, 239, 0.8);
+    padding: 30px;
+    border-radius: 30px;
+    height: auto;
+}
+
+.account-bg {
+    background-color: #8DB991;
+    width: 350px;
+    height: 500px;
+}
+
+.avatar-bg {
+    width: 325px;
+    height: 300px;
+    position: relative;
+    margin: auto;
+}
+
+.name-bg {
+    background-color: #D9D9D9;
+    padding: 25px;
+    border-radius: 30px;
+    width: 380px;
+    height: 80px;
+    margin: auto;
+}
+
+.scroll {
+    overflow: auto;
+    scrollbar-width: none;
+}
+
+body {
+    background-image: url('../images/im.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+}
+
+.transparent-navbar {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.transparent-bg-account {
+    background-color: #287D40;
+    padding: 30px;
+    height: 500px;
+}
+
+
+.btn-task {
+    width: 350px;
+    height: 60px;
+    color: #000;
+    background-color: #8DB991;
+    border-color: #8DB991;
+}

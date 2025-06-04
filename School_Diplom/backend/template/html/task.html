@@ -1,0 +1,47 @@
+{% extends 'html/base.html' %}
+{% load static %}
+
+{% block static %}<link rel="stylesheet" type="text/css" href="{% static 'css/task.css' %}">{% endblock %}
+{% block title %}Задание{% endblock %}
+
+{% block content %}
+<div class="container mt-4 mb-4">
+    <div class="row">
+        <div class="col-2 offset-1">
+            <div class="col-2 text-center justify-content-center align-self-center">
+                <img src="{% static 'images/dwarf_task.png' %}" width="100" height="80" alt="Дракон">
+            </div>
+        </div>
+        <div class="col-8">
+            <img src="{% static 'images/task_progress/task_' %}{{ index }}.png" width="750" height="80" alt="Прогресс">
+        </div>
+    </div>
+</div>
+<div class="container transparent-bg">
+    <div class="row ms-3 mt-5">
+        <p><b>Задание {{ i }}</b></p>
+        <p>{{ task.text }}</p>
+    </div>
+    <!-- Сюда нужно подставить задачи, которые есть у задания -->
+    {% if task.image_name %}
+    <div class="row ms-3" style="max-width: 35%;">
+        <img src="{% static 'task_image/' %}{{task.image_name}}" alt="Задание">
+    </div>
+    {% endif %}
+    <div class="row mt-4">
+        <div class="col-12">
+            <form method="post" class="d-flex align-items-center">
+                {% csrf_token %}
+                <div class="form-group flex-grow-1">
+                    <input type="text" class="form-control" name="answer" placeholder="Введите ваш ответ">
+                </div>
+                <button type="submit" class="btn btn-success btn-task ms-3">Отправить ответ</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="mt-4 ps-0">
+        <a href="{% url 'items' %}"><img src="{% static 'images/back.png' %}" alt="Назад" width="35" height="35"></a>
+    </div>
+</div>
+{% endblock %}
