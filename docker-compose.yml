@@ -24,8 +24,13 @@ services:
       - redis
 
   pgdb:
-    image: postgres:latest
-    restart: always
+    # Использование готового образа postgres
+    image: pgdb/0.0.5
+    # Сборка образа для сервиса pgdb из текущей директории
+    build:
+      context: School_Diplom/postgresql
+      dockerfile: ./Dockerfile
+    # Задание переменных окружения для контейнера с postgres
     environment:
       - POSTGRES_DB=DB_Diplom
       - POSTGRES_USER=postgres
@@ -85,3 +90,4 @@ volumes:
   pgdbdata:
   static_volume:
   media_volume:
+

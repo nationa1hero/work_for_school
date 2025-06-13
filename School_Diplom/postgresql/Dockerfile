@@ -1,4 +1,4 @@
 # Dockerfile
-FROM postgres:15.3
+FROM postgres:17.2
 
 COPY sql-data.sql /docker-entrypoint-initdb.d/
