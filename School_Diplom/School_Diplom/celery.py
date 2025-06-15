@@ -3,7 +3,7 @@ from celery import Celery
 from celery.schedules import crontab
 
 # Установка модуля настроек Django
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'School_Diplom.settings.dev')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'School_Diplom.settings.prod')
 
 app = Celery('School_Diplom')
 

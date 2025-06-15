@@ -120,10 +120,9 @@ def login_view(request):
         form = LoginForm()
     return render(request, 'html/login.html', {'form': form})
 
-
 @login_required
 def home(request):
-    user = ProfileData.objects.get(pk=request.user.id)
+    user = ProfileData.objects.get(pk=request.user.id)                                               
     if user.is_staff and user.is_superuser:
         students = Student.objects.all()
         return render(request, 'html/admin_account.html', {'user': user, 'students': students})

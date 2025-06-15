@@ -22,4 +22,4 @@ urlpatterns = [
 ]
 
 if dev.DEBUG:
-    urlpatterns += static(dev.STATIC_URL, document_root=dev.MEDIA_ROOT)
+    urlpatterns += static(dev.MEDIA_URL, document_root=dev.MEDIA_ROOT)
